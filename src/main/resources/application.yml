@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: demo-project
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_s2
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+
+keycloak:
+  realm: spring-s2
+  domain: localhost:9901
+  adminClientId: spring-s2
+  adminClientSecret: sHTYJrdUgeAviUMYYisXKkViJCJeYiGv
+  urls:
+    auth: http://${keycloak.domain}
+
+jwt:
+  auth:
+    converter:
+      resource-id: spring-s2
